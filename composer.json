@@ -1,0 +1,21 @@
+{
+    "name": "saeed/terminal",
+    "description": "Implementation terminals of iraninan banks",
+    "type": "metapackage",
+    "keywords": ["terminal", "bank"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Saeed Hemmati",
+            "email": "hemmati464@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "BankTerminal\\": "src/"
+        }
+    },
+    "require": {
+      "Illuminate/Support": "~5"
+    }
+}
