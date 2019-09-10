@@ -6,7 +6,7 @@ class Saman
 {
     private function generateResNum(): string
     {
-        return hash('sha256', time());
+        return hash('sha256', time() * rand(99, 999));
     }
 
     /**
@@ -16,6 +16,7 @@ class Saman
     {
         $client = new \SoapClient('https://sep.shaparak.ir/Payments/InitPayment.asmx?WSDL');
         $generatedResNum = $this->generateResNum();
+        dd($generatedResNum);
         $result = $client->RequestToken(
             config('terminals.saman.merchantId'),
             $generatedResNum,
