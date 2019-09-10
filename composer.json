@@ -1,5 +1,5 @@
 {
-    "name": "saeed/terminal",
+    "name": "wikiphp/terminal",
     "description": "Implementation terminals of iraninan banks",
     "type": "metapackage",
     "keywords": ["terminal", "bank"],
