@@ -16,7 +16,6 @@ class Saman
     {
         $client = new \SoapClient('https://sep.shaparak.ir/Payments/InitPayment.asmx?WSDL');
         $generatedResNum = $this->generateResNum();
-        dd($generatedResNum);
         $result = $client->RequestToken(
             config('terminals.saman.merchantId'),
             $generatedResNum,
