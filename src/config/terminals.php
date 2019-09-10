@@ -10,5 +10,6 @@ return [
     */
     'saman' => [
         'merchantId' => '',
+        'redirectUrl' => '',
     ],
 ];
