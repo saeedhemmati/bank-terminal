@@ -8,9 +8,20 @@ class Saman extends Exception
 {
     private function generateResNum(): string
     {
-        return hash('sha256', time() * rand(99, 999));
+        return hash('sha256',
+          rand(11111111, 99999999).
+          '-'.
+          rand(1111, 9999).
+          '-'.
+          rand(1111, 9999).
+          '-'.
+          rand(1111, 9999).
+          '-'.
+          rand(111111111111, 999999999999),
+        );
     }
 
+    // TODO: implement unit test
     public function getToken(string $amount = '')
     {
         $client = new \SoapClient('https://sep.shaparak.ir/Payments/InitPayment.asmx?WSDL');
