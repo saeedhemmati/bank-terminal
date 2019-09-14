@@ -6,18 +6,36 @@ use BankTerminal\Saman\SamanException as Exception;
 
 class Saman extends Exception
 {
+    private function generateRandomString(
+      int $length = 32,
+      string $keySpace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    ): string
+    {
+        if ($length < 1)
+        {
+            throw new \RangeException("Length must be above 1");
+        }
+        $pieces = [];
+        $max = mb_strlen($keySpace, '8bit') - 1;
+        for ($i = 0; $i < $length; ++$i)
+        {
+            $pieces []= $keySpace[random_int(0, $max)];
+        }
+        return implode('', $pieces);
+    }
+
     private function generateResNum(): string
     {
         return hash('sha256',
-          rand(11111111, 99999999).
+          $this->generateRandomString(8).
           '-'.
-          rand(1111, 9999).
+          $this->generateRandomString(4).
           '-'.
-          rand(1111, 9999).
+          $this->generateRandomString(4).
           '-'.
-          rand(1111, 9999).
+          $this->generateRandomString(4).
           '-'.
-          rand(111111111111, 999999999999),
+          $this->generateRandomString(12),
         );
     }
 
