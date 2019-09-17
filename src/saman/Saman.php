@@ -40,7 +40,7 @@ class Saman extends Exception
     }
 
     // TODO: implement unit test
-    public function getToken(string $amount = '')
+    public function getToken(string $amount = ''): string
     {
         $client = new \SoapClient('https://sep.shaparak.ir/Payments/InitPayment.asmx?WSDL');
         $generatedResNum = $this->generateResNum();
@@ -64,5 +64,6 @@ class Saman extends Exception
         {
             die($exceptionMessage);
         }
+        return $result;
     }
 }
