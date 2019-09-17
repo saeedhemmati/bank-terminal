@@ -66,4 +66,23 @@ class Saman extends Exception
         }
         return $result;
     }
+
+    public function verifyTransaction()
+    {
+        $transactionState = $_POST['State'];
+        $transactionRefNum = $_POST['RefNum'];
+        if ($transactionState == 'OK')
+        {
+            $soapClient = new \SoapClient('https://sep.shaparak.ir/payments/referencepayment.asmx?WSDL');
+            $soapProxy = $soapClient->getProxy();
+            $verificationResult = $soapProxy->verifyTransaction(
+              $transactionRefNum,
+              config('saman.merchantId'),
+            );
+            if ($verificationResult <= 0)
+            {
+                throw new \Exception('Verification failed: ' . $verificationResult);
+            }
+        }
+    }
 }

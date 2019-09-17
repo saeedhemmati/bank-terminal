@@ -9,7 +9,7 @@ return [
     | from bank
     */
     'saman' => [
-        'merchantId' => '11443522',
+        'merchantId' => '',
         'redirectUrl' => '',
     ],
 ];
